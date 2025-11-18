@@ -43,14 +43,75 @@
   btnBigCursor.addEventListener('click', ()=>{ const on = body.classList.toggle('big-cursor'); setPref('bigCursor', on); });
   if(getPref('bigCursor',false)) body.classList.add('big-cursor');
 
-  // Mobile nav toggle using Bootstrap collapse
-  document.getElementById('mobile-nav-toggle').addEventListener('click', function(){
+  // Mobile nav toggle using Bootstrap collapse with backdrop handling
+  (function(){
+    const toggle = document.getElementById('mobile-nav-toggle');
     const panel = document.getElementById('mobile-panel');
+    if(!toggle || !panel || typeof bootstrap === 'undefined') return;
+
     const bs = bootstrap.Collapse.getOrCreateInstance(panel, {toggle:false});
-    bs.toggle();
-    const expanded = this.getAttribute('aria-expanded') === 'true';
-    this.setAttribute('aria-expanded', String(!expanded));
-  });
+    let backdrop = null;
+
+    function createBackdrop(){
+      backdrop = document.createElement('div');
+      backdrop.id = 'mobile-backdrop';
+      backdrop.className = 'mobile-backdrop';
+      document.body.appendChild(backdrop);
+      backdrop.addEventListener('click', onBackdropClick);
+    }
+
+    function removeBackdrop(){
+      if(!backdrop) return;
+      backdrop.removeEventListener('click', onBackdropClick);
+      if(backdrop.parentNode) backdrop.parentNode.removeChild(backdrop);
+      backdrop = null;
+    }
+
+    function onBackdropClick(){
+      bs.hide();
+      toggle.setAttribute('aria-expanded','false');
+    }
+
+    // Toggle handler
+    toggle.addEventListener('click', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      if(panel.classList.contains('show')){
+        bs.hide();
+      } else {
+        bs.show();
+      }
+    });
+
+    // Prevent clicks inside the mobile panel from bubbling up
+    panel.addEventListener('click', function(e){ e.stopPropagation(); });
+
+    // Close panel when any in-panel link is clicked (short delay for feedback)
+    panel.querySelectorAll('a').forEach(a=>{
+      a.addEventListener('click', function(){
+        setTimeout(()=>{ bs.hide(); }, 120);
+      });
+    });
+
+    // Hook bootstrap show/hide events to manage aria and backdrop
+    panel.addEventListener('show.bs.collapse', function(){
+      toggle.setAttribute('aria-expanded','true');
+      // createBackdrop();
+    });
+
+    panel.addEventListener('shown.bs.collapse', function(){
+      // nothing extra yet
+    });
+
+    panel.addEventListener('hide.bs.collapse', function(e){
+      // allow hide, but ensure aria updated in hidden event
+    });
+
+    panel.addEventListener('hidden.bs.collapse', function(){
+      toggle.setAttribute('aria-expanded','false');
+      removeBackdrop();
+    });
+  })();
 
   // IntersectionObserver for reveal-on-scroll animations
   const revealEls = document.querySelectorAll('.reveal');

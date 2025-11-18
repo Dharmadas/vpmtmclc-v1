@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Law College — Home</title>
+    <title>VPM's TMC Law College — Home</title>
     <meta name="description" content="Official site of the Law College — Judgments, Notices, Admissions, Faculty and Services. Accessible and responsive." />
     <meta name="keywords" content="Law College, Judgments, Admissions, e-Filing, Cause List, Notices" />
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tailwind Play CDN (utility classes) -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!--script src="https://cdn.tailwindcss.com"></script-->
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
@@ -19,7 +19,7 @@
   <body class="site-root" data-theme="light">
 
     <!-- Accessibility toolbar -->
-    <div id="access-toolbar" class="access-toolbar d-flex align-items-center justify-content-between p-2">
+    <div id="access-toolbar" class="access-toolbar align-items-center justify-content-between p-2" style="display: none;">
       <div class="d-flex align-items-center gap-2">
         <button id="toggle-contrast" class="btn btn-sm btn-outline-dark" aria-pressed="false">High Contrast</button>
         <button id="text-decrease" class="btn btn-sm btn-outline-secondary">A-</button>
@@ -29,25 +29,25 @@
         <button id="toggle-images" class="btn btn-sm btn-outline-warning">Hide Images</button>
         <button id="big-cursor" class="btn btn-sm btn-outline-primary">Big Cursor</button>
       </div>
-      <div class="d-flex align-items-center gap-2">
+      <!-- <div class="d-flex align-items-center gap-2">
         <a href="#content" class="skip-link btn btn-sm btn-link">Skip to content</a>
         <a id="college-logo" href="#" class="btn btn-sm btn-link">Google Translator</a>
-      </div>
+      </div> -->
     </div>
 
     <header class="main-header" role="banner">
       <div class="container-lg header-card p-3 rounded-3">
         <div class="d-flex align-items-center justify-content-between">
           <div class="brand d-flex align-items-center gap-3">
-            <img src="assets/images/logo.svg" alt="College logo" id="logo" width="72" height="72">
+            <img src="assets/images/logo.jpg" alt="College logo" id="logo" width="72" height="72">
             <div>
-              <h1 class="m-0 site-title">Law College</h1>
+              <h1 class="m-0 site-title">VPM's TMC <br/>LAW COLLEGE</h1>
               <div class="site-subtitle small text-muted">प्रबोधनो ज्ञानमयः प्रबोधः</div>
             </div>
           </div>
 
           <nav class="main-nav" aria-label="Primary navigation">
-            <button id="mobile-nav-toggle" class="btn btn-outline-dark d-md-none" aria-expanded="false">Menu</button>
+            <button id="mobile-nav-toggle" type="button" class="btn btn-outline-dark d-md-none" aria-expanded="false">Menu</button>
             <ul class="nav d-none d-md-flex gap-3 align-items-start">
               <li class="nav-item dropdown me-2">
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Home</a>
@@ -55,7 +55,7 @@
                   <div class="row">
                     <div class="col-6">
                       <h6>Home Links</h6>
-                      <a class="dropdown-item" href="#">Link 1</a>
+                      <a class="dropdown-item" href="http://www.google.com">Link 1</a>
                       <a class="dropdown-item" href="#">Link 2</a>
                       <a class="dropdown-item" href="#">Link 3</a>
                     </div>
@@ -121,7 +121,7 @@
         <!-- mobile nav panel -->
         <div id="mobile-panel" class="mobile-panel d-md-none mt-3 collapse">
           <ul class="list-unstyled">
-            <li><a href="#">Home / Link 1</a></li>
+            <li><a href="https://www.google.com">Home / Link 1</a></li>
             <li><a href="#">About Us / Link 1</a></li>
             <li><a href="#">Admissions / Link 1</a></li>
             <li><a href="#">Faculty / Link 1</a></li>

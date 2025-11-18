@@ -71,5 +71,15 @@ body{
   .nav.d-none.d-md-flex{display:none!important}
 }
 
+/* Mobile nav backdrop and stacking */
+.mobile-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.22);z-index:1040}
+#mobile-panel{z-index:1045}
+
+/* Mobile panel link styling — match desktop accent and improve touch target */
+#mobile-panel, .mobile-panel{background:var(--card-bg);padding:0.6rem;border-radius:8px}
+.mobile-panel a, #mobile-panel a{color:var(--accent);display:block;padding:0.5rem 0;text-decoration:none}
+.mobile-panel a:focus, #mobile-panel a:focus{outline:3px solid rgba(11,87,208,0.18);outline-offset:2px}
+.mobile-panel a:hover, #mobile-panel a:hover{text-decoration:underline}
+
 /* Subtle rotation animation (used sparingly) */
 @keyframes slow-rotate { from { transform: rotate(0deg)} to { transform: rotate(1deg)} }
