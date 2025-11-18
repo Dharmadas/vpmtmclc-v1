@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="100%" height="100%" fill="#f6eefb" rx="8"/>
+  <circle cx="200" cy="110" r="64" fill="#9b7be0"/>
+  <text x="200" y="200" text-anchor="middle" fill="#6b4a9a">Photo</text>
+</svg>

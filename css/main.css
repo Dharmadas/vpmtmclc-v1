@@ -1,0 +1,75 @@
+:root{
+  --bg-blue: #d9eefc;
+  --card-bg: #ffffff;
+  --metal-edge: #cfcfcf;
+  --wood-bg: #2b1f18;
+  --text-color: #1f1f1f;
+  --accent: #0b57d0;
+  --font-scale: 1rem;
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg,var(--bg-blue) 0%, #eaf6ff 60%), var(--wood-bg);
+  color:var(--text-color);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:var(--font-scale);
+}
+
+.header-card{
+  /* background: linear-gradient(0deg, rgba(255,255,255,0.95), rgba(255,255,255,0.95));
+  border-radius:12px;
+  border:8px solid rgba(255,255,255,0.85);
+  box-shadow: 0 8px 24px rgba(16,24,40,0.3), inset 0 0 0 2px var(--metal-edge); */
+}
+
+.access-toolbar{background:rgba(255,255,255,0.85);position:sticky;top:0;z-index:1050;border-bottom:1px solid rgba(0,0,0,0.06)}
+.site-title{font-size:1.25rem;margin:0}
+.site-subtitle{font-style:italic}
+
+.hero-section{background:transparent}
+.latest-info .list-group-item{cursor:pointer}
+
+.access-card{transition:transform .25s ease, box-shadow .25s ease}
+.access-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.15)}
+
+.feature-card{background:rgba(255,255,255,0.6);border-radius:8px;border-left:4px solid var(--accent)}
+
+.mega-menu{min-width:320px}
+
+/* Accessibility classes */
+.high-contrast{background:#000;color:#fff}
+.high-contrast a{color:#ffff00}
+.large-text{font-size:1.15rem}
+.extra-large-text{font-size:1.3rem}
+.increased-line-height{line-height:1.8}
+.hide-images img, .hide-images svg{opacity:0;visibility:hidden}
+.big-cursor *{cursor:cell}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:all .7s cubic-bezier(.2,.9,.2,1);will-change:opacity,transform}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal.fade-in{opacity:0;transform:none}
+.reveal.slide-up{transform:translateY(22px)}
+.reveal.rotate{transform:rotateX(16deg) translateY(8px)}
+
+/* Quick focus outlines for keyboard users */
+:focus{outline:3px solid rgba(11,87,208,0.25);outline-offset:2px}
+
+/* Card container look */
+.site-root .container-lg{max-width:1100px}
+
+/* Footer */
+.site-footer a{text-decoration:none}
+
+/* Responsive tweaks */
+@media (max-width:768px){
+  .nav.d-none.d-md-flex{display:none!important}
+}
+
+/* Subtle rotation animation (used sparingly) */
+@keyframes slow-rotate { from { transform: rotate(0deg)} to { transform: rotate(1deg)} }
