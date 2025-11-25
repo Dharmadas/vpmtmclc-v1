@@ -62,7 +62,7 @@ body{
 .site-root .container-lg{max-width:1100px}
 
 /* Footer */
-.site-footer a{text-decoration:none}
+.site-footer a{text-decoration:none;color: gray !important;}
 
 /* Responsive tweaks */
 @media (max-width:768px){
