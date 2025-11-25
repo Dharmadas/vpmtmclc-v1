@@ -13,7 +13,8 @@ html,body{height:100%}
 body{
   margin:0;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: linear-gradient(180deg,var(--bg-blue) 0%, #eaf6ff 60%), var(--wood-bg);
+  background: linear-gradient(180deg,#2299aa 0%, #eaf6ff 60%), var(--wood-bg);
+  background: #2299aa;
   color:var(--text-color);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
@@ -37,7 +38,7 @@ body{
 .access-card{transition:transform .25s ease, box-shadow .25s ease}
 .access-card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(2,6,23,0.15)}
 
-.feature-card{background:rgba(255,255,255,0.6);border-radius:8px;border-left:4px solid var(--accent)}
+.feature-card{background: #ffffff;border-radius:8px;border-left:4px solid var(--accent)}
 
 .mega-menu{min-width:320px}
 
@@ -56,9 +57,6 @@ body{
 .reveal.fade-in{opacity:0;transform:none}
 .reveal.slide-up{transform:translateY(22px)}
 .reveal.rotate{transform:rotateX(16deg) translateY(8px)}
-
-/* Quick focus outlines for keyboard users */
-:focus{outline:3px solid rgba(11,87,208,0.25);outline-offset:2px}
 
 /* Card container look */
 .site-root .container-lg{max-width:1100px}
@@ -83,3 +81,86 @@ body{
 
 /* Subtle rotation animation (used sparingly) */
 @keyframes slow-rotate { from { transform: rotate(0deg)} to { transform: rotate(1deg)} }
+
+/* Make navigation links white (desktop + dropdown + mobile) */
+.main-header .main-nav .nav-link {
+    color: #ffffff !important;
+}
+/* Remove the blue box for mouse hover/click — show outline only for keyboard users */
+.main-header .main-nav .nav-link,
+.main-header .main-nav .nav-link:hover,
+.main-header .main-nav .nav-link:active,
+.main-header .main-nav .nav-link:focus {
+    outline: none;
+    box-shadow: none;
+}
+.main-header .main-nav .nav-link:focus-visible {
+    outline: 3px solid rgba(11,87,208,0.25);
+    outline-offset: 2px;
+}
+
+.main-header .main-nav .nav-link:hover,
+.main-header .main-nav .nav-link:focus {
+    color: #000000 !important; /* changed to black on hover/focus */
+}
+
+/* Dropdown / mega menu items */
+.main-header .main-nav .dropdown-menu,
+.main-header .main-nav .mega-menu {
+    background: lightblue; /* or a dark color if needed */
+}
+.main-header .main-nav .dropdown-item {
+    /* color: rgb(0, 145, 255) !important; */
+    color: rgb(0, 145, 255) !important;
+}
+.main-header .main-nav .dropdown-item:hover,
+.main-header .main-nav .dropdown-item:focus {
+    color: #000000 !important; /* changed to black on hover/focus */
+}
+
+/* Mobile panel */
+#mobile-panel {
+    /* background: rgba(0,0,0,0.85);  */
+    background: lightblue; /* ensures contrast for white links */
+    padding: 0.6rem;
+    border-radius: 0.4rem;
+}
+#mobile-panel a {
+    /* color: #ffffff !important; */
+    color: #000000 !important;
+    display: block;
+    padding: 0.4rem 0.25rem;
+}
+#mobile-panel a:hover,
+#mobile-panel a:focus {
+    color: #000000 !important; /* changed to black on hover/focus */
+}
+
+/* Optional: ensure mobile toggle text is readable */
+#mobile-nav-toggle {
+    color: #ffffff !important;
+    border-color: rgba(255,255,255,0.2);
+}
+
+
+/* Remove blue focus/box-shadow around nav links for mouse/hover/click,
+   but keep an outline for keyboard users via :focus-visible */
+.main-nav .nav-link,
+.main-nav .nav-link:hover,
+.main-nav .nav-link:active,
+.main-nav .nav-link:focus,
+.main-nav .dropdown-toggle,
+.main-nav .dropdown-toggle:focus,
+.main-nav .dropdown-item,
+.main-nav .dropdown-item:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Show accessible focus only for keyboard users */
+.main-nav .nav-link:focus-visible,
+.main-nav .dropdown-item:focus-visible,
+.main-nav .dropdown-toggle:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}

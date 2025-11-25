@@ -189,4 +189,52 @@
     const saved = getPref('theme','light'); if(saved === 'dark'){ body.setAttribute('data-theme','dark'); document.documentElement.style.setProperty('--bg-blue','#06263a'); }
   })();
 
+  document.addEventListener('DOMContentLoaded', function () {
+    // Enable hover-based dropdowns on non-touch, md+ screens.
+    function enableHoverDropdowns() {
+        // don't enable on touch devices or small screens
+        if ('ontouchstart' in window || window.matchMedia('(max-width: 767.98px)').matches) return;
+
+        document.querySelectorAll('.main-nav .dropdown').forEach(function (dropdown) {
+            // avoid binding multiple times
+            if (dropdown.dataset.hoverBound === '1') return;
+            dropdown.dataset.hoverBound = '1';
+
+            const toggle = dropdown.querySelector('[data-bs-toggle="dropdown"]');
+            if (!toggle) return;
+            const bsInstance = bootstrap.Dropdown.getOrCreateInstance(toggle);
+            let hideTimer = null;
+
+            dropdown.addEventListener('mouseenter', function () {
+                clearTimeout(hideTimer);
+                bsInstance.show();
+            });
+
+            dropdown.addEventListener('mouseleave', function () {
+                clearTimeout(hideTimer);
+                hideTimer = setTimeout(function () {
+                    bsInstance.hide();
+                }, 200); // small delay to avoid flicker
+            });
+
+            // Keep click behavior usable — prevent accidental page jump for '#' links when desktop hover is used
+            toggle.addEventListener('click', function (ev) {
+                if (window.matchMedia('(min-width: 768px)').matches && !('ontouchstart' in window)) {
+                    ev.preventDefault();
+                    bsInstance.toggle();
+                }
+            });
+        });
+    }
+
+    enableHoverDropdowns();
+
+    // Re-evaluate on resize (simple debounce)
+    let resizeTimer = null;
+    window.addEventListener('resize', function () {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(enableHoverDropdowns, 200);
+    });
+});
+
 })();
